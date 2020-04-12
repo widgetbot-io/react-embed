@@ -24,7 +24,7 @@ export interface IProps {
 class WidgetBot extends React.PureComponent<IProps> {
   static defaultProps: IProps = {
     server: '299881420891881473',
-    shard: 'https://widgetbot.io',
+    shard: 'https://e.widgetbot.io',
     options: {},
     defer: false
   }
