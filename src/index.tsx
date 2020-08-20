@@ -17,6 +17,7 @@ export interface IProps {
   style?: React.CSSProperties
   height?: number
   width?: number
+  focusable?: boolean
 
   options?: { [key: string]: string }
 }
@@ -26,7 +27,8 @@ class WidgetBot extends React.PureComponent<IProps> {
     server: '299881420891881473',
     shard: 'https://e.widgetbot.io',
     options: {},
-    defer: false
+    defer: false,
+    focusable: true
   }
 
   state = {
@@ -57,7 +59,7 @@ class WidgetBot extends React.PureComponent<IProps> {
   }
 
   render() {
-    const { defer, className, style, height, width } = this.props
+    const { defer, className, style, height, width, focusable } = this.props
 
     return (
       <div
@@ -68,6 +70,7 @@ class WidgetBot extends React.PureComponent<IProps> {
           src={defer ? '' : this.state.url}
           ref={ref => (this.api.iframe = ref)}
           style={Embed}
+          tabIndex={focusable ? null : -1}
           title="Discord chat embed"
         />
       </div>
