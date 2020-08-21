@@ -4,82 +4,76 @@ import * as React from 'react'
 import { Embed, Root } from './elements'
 import { generateUUID, searchParams } from './util'
 
-export interface IProps {
-  server?: string
-  channel?: string
-  shard?: string
+export interface Props {
+    server?: string
+    channel?: string
+    shard?: string
 
-  defer?: boolean
+    defer?: boolean
 
-  className?: string
-  onAPI?: (api: Client) => void
+    className?: string
+    onAPI?: (api: Client) => void
 
-  style?: React.CSSProperties
-  height?: number
-  width?: number
-  focusable?: boolean
+    style?: React.CSSProperties
+    height?: number
+    width?: number
+    focusable?: boolean
 
-  options?: { [key: string]: string }
+    options?: { [key: string]: string }
 }
 
-class WidgetBot extends React.PureComponent<IProps> {
-  static defaultProps: IProps = {
+export default class WidgetBot extends React.PureComponent<Props> {
+  static defaultProps: Props = {
     server: '299881420891881473',
     shard: 'https://e.widgetbot.io',
     options: {},
-    defer: false,
+    defer: true,
     focusable: true
   }
 
-  state = {
-    url: null,
-    id: generateUUID()
-  }
+    state = {
+        url: null,
+        id: generateUUID()
+    }
 
-  api = new Client({
-    id: this.state.id,
-    iframe: null
-  })
+    api = new Client({
+        id: this.state.id,
+        iframe: null
+    })
 
-  static getDerivedStateFromProps(props: IProps, state) {
-    const url = `${props.shard}/channels/${props.server}${
-      props.channel ? `/${props.channel}` : ''
-    }/${searchParams({
-      ...props.options,
-      api: state.id
-    })}`
+    static getDerivedStateFromProps(props: Props, state) {
+        const url = `${props.shard}/channels/${props.server}${
+            props.channel ? `/${props.channel}` : ''
+        }/${searchParams({
+            ...props.options,
+            api: state.id
+        })}`
 
-    return { url }
-  }
+        return { url }
+    }
 
-  componentDidMount() {
-    const { onAPI } = this.props
+    componentDidMount() {
+        const { onAPI } = this.props
 
-    if (onAPI) onAPI(this.api)
-  }
+        if (onAPI) onAPI(this.api)
+    }
 
-  render() {
-    const { defer, className, style, height, width, focusable } = this.props
+    render() {
+        const { defer, className, style, height, width, focusable } = this.props
 
-    return (
-      <div
-        className={className}
-        style={{ ...Root({ width, height }), ...style }}
-      >
-        <iframe
-          src={defer ? '' : this.state.url}
-          ref={ref => (this.api.iframe = ref)}
-          style={Embed}
-          tabIndex={focusable ? null : -1}
-          title="Discord chat embed"
-        />
-      </div>
-    )
-  }
+        return (
+            <div
+                className={className}
+                style={{ ...Root({ width, height }), ...style }}
+            >
+                <iframe
+                    src={defer ? '' : this.state.url}
+                    ref={ref => (this.api.iframe = ref)}
+                    style={Embed}
+                    tabIndex={focusable ? null : -1}
+                    title="Discord chat embed"
+                />
+            </div>
+        )
+    }
 }
-
-export default WidgetBot
-
-export * from '@widgetbot/embed-api'
-
-export { Client as API } from '@widgetbot/embed-api'
