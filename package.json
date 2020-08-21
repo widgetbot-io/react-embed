@@ -10,8 +10,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",
-    "precommit": "pretty-quick --staged",
-    "release": "yarn build && yarn publish",
+    "prepublishOnly": "yarn build",
     "build": "tsc"
   },
   "dependencies": {
