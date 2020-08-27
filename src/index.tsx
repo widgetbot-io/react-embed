@@ -27,7 +27,7 @@ export default class WidgetBot extends React.PureComponent<Props> {
     server: '299881420891881473',
     shard: 'https://e.widgetbot.io',
     options: {},
-    defer: true,
+    defer: false,
     focusable: true
   }
 
