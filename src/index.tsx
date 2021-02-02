@@ -8,6 +8,7 @@ export interface Props {
     server?: string
     channel?: string
     shard?: string
+    username?: string
 
     defer?: boolean
 
@@ -23,13 +24,13 @@ export interface Props {
 }
 
 export default class WidgetBot extends React.PureComponent<Props> {
-  static defaultProps: Props = {
-    server: '299881420891881473',
-    shard: 'https://e.widgetbot.io',
-    options: {},
-    defer: false,
-    focusable: true
-  }
+    static defaultProps: Props = {
+        server: '299881420891881473',
+        shard: 'https://e.widgetbot.io',
+        options: {},
+        defer: false,
+        focusable: true
+    }
 
     state = {
         url: null,
@@ -42,12 +43,19 @@ export default class WidgetBot extends React.PureComponent<Props> {
     })
 
     static getDerivedStateFromProps(props: Props, state) {
-        const url = `${props.shard}/channels/${props.server}${
-            props.channel ? `/${props.channel}` : ''
-        }/${searchParams({
+        let shard = props.shard
+        if (!shard.startsWith('http')) shard = `https://${shard}`
+        if (shard.endsWith('/')) shard = shard.substring(0, shard.length - 1)
+
+        let params: { [key: string]: string } = {
             ...props.options,
             api: state.id
-        })}`
+        }
+        if (props.username) params.username = props.username
+
+        const url = `${shard}/channels/${props.server}${
+            props.channel ? `/${props.channel}` : ''
+        }/${searchParams(params)}`
 
         return { url }
     }
