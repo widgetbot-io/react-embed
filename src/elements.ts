@@ -1,4 +1,4 @@
-type Options = { width: number; height: number }
+type Options = { width: number | string; height: number | string }
 
 export const Root = ({ width, height }: Options) => ({
   ...(height && { height: +height ? `${height}px` : height }),
