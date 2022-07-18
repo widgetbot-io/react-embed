@@ -17,8 +17,8 @@ export interface Props {
     onAPI?: (api: Client) => void
 
     style?: React.CSSProperties
-    height?: number
-    width?: number
+    height?: number | string
+    width?: number | string
     focusable?: boolean
 
     options?: { [key: string]: string }
