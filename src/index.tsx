@@ -10,6 +10,7 @@ export interface Props {
     shard?: string
     username?: string
     avatar?: string
+    token?: string
 
     defer?: boolean
 
@@ -54,6 +55,7 @@ export default class WidgetBot extends React.PureComponent<Props> {
         }
         if (props.username) params.username = props.username
         if (props.avatar) params.avatar = props.avatar
+        if (props.token) params.token = props.token
 
         const url = `${shard}/channels/${props.server}${
             props.channel ? `/${props.channel}` : ''
