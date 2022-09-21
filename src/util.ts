@@ -13,7 +13,7 @@ export function generateUUID() {
   })
 }
 
-export const searchParams = (obj: { [key: string]: string } = {}) =>
+export const searchParams = (obj: { [key: string]: string | number | boolean } = {}) =>
   '?' +
   Object.keys(obj)
     .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`)

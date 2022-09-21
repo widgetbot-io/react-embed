@@ -11,6 +11,8 @@ export interface Props {
     username?: string
     avatar?: string
     token?: string
+    notifications?: boolean
+    notificationTimeout?: number
 
     defer?: boolean
 
@@ -49,13 +51,15 @@ export default class WidgetBot extends React.PureComponent<Props> {
         if (!shard.startsWith('http')) shard = `https://${shard}`
         if (shard.endsWith('/')) shard = shard.substring(0, shard.length - 1)
 
-        let params: { [key: string]: string } = {
+        let params: { [key: string]: string | number | boolean } = {
             ...props.options,
             api: state.id
         }
         if (props.username) params.username = props.username
         if (props.avatar) params.avatar = props.avatar
         if (props.token) params.token = props.token
+        if (props.notifications) params.notifications = props.notifications
+        if (props.notificationTimeout) params.notificationtimeout = props.notificationTimeout
 
         const url = `${shard}/channels/${props.server}${
             props.channel ? `/${props.channel}` : ''
