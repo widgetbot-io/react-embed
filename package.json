@@ -11,7 +11,8 @@
   "scripts": {
     "start": "tsc -w",
     "prepublishOnly": "yarn build",
-    "build": "tsc"
+    "build": "tsc",
+    "release": "yarn version && yarn publish"
   },
   "dependencies": {
     "@widgetbot/embed-api": "^1.1.3",
