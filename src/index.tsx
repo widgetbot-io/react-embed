@@ -14,6 +14,7 @@ export interface Props {
     notifications?: boolean
     notificationTimeout?: number
     accessibility?: string[]
+    settingsGroup?: string
 
     defer?: boolean
 
@@ -62,6 +63,7 @@ export default class WidgetBot extends React.PureComponent<Props> {
         if (props.notifications) params.notifications = props.notifications
         if (props.notificationTimeout) params.notificationtimeout = props.notificationTimeout
         if (props.accessibility) params.accessibility = props.accessibility.join()
+        if (props.settingsGroup) params['settings-group'] = props.settingsGroup
 
         const url = `${shard}/channels/${props.server}${
             props.channel ? `/${props.channel}` : ''
