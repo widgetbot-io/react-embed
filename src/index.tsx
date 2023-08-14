@@ -91,7 +91,7 @@ export default class WidgetBot extends React.PureComponent<Props> {
                     ref={ref => (this.api.iframe = ref)}
                     style={Embed}
                     tabIndex={focusable ? null : -1}
-                    allow="clipboard-write"
+                    allow="clipboard-write; fullscreen"
                     title="Discord chat embed"
                 />
             </div>
