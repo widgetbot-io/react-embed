@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties, RefObject, ReactNode } from 'react';
+import React, { PureComponent, CSSProperties, RefObject } from 'react';
 import { Client } from '@widgetbot/embed-api';
 import { Embed, Root } from './elements';
 import { generateUUID, searchParams } from './util';
@@ -52,6 +52,7 @@ interface State {
   url: string | null;
   id: string;
   isChatVisible: boolean;
+  hasError: boolean;
 }
 
 class WidgetBot extends PureComponent<Props, State> {
@@ -79,6 +80,7 @@ class WidgetBot extends PureComponent<Props, State> {
     url: null,
     id: generateUUID(),
     isChatVisible: true,
+    hasError: false,
   };
 
   api: Client = new Client({
@@ -90,12 +92,11 @@ class WidgetBot extends PureComponent<Props, State> {
     iframe: null as RefObject<HTMLIFrameElement> | null,
   });
 
-  static getDerivedStateFromProps(props: Props, state: State): Partial<State> | null {
-    // ... (remaining code remains the same)
-  }
-
-  componentDidMount() {
-    // ... (remaining code remains the same)
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    console.error('An error occurred in WidgetBot:', error, errorInfo);
+    this.setState({
+      hasError: true,
+    });
   }
 
   toggleChatVisibility = (): void => {
@@ -115,7 +116,12 @@ class WidgetBot extends PureComponent<Props, State> {
       showChatButtonLabel,
       hideChatButtonLabel,
     } = this.props;
-    const { isChatVisible } = this.state;
+    const { isChatVisible, hasError } = this.state;
+
+    if (hasError) {
+      // Display an error message or component
+      return <div>Sorry, something went wrong.</div>;
+    }
 
     return (
       <div>
