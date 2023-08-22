@@ -1,4 +1,4 @@
-type Options = { width: number | string; height: number | string }
+type Options = { width: number | string; height: number | string };
 
 export const Root = ({ width, height }: Options) => ({
   ...(height && { height: +height ? `${height}px` : height }),
@@ -7,11 +7,11 @@ export const Root = ({ width, height }: Options) => ({
   overflow: 'hidden',
   backgroundColor: 'rgb(54, 57, 62)',
   borderRadius: 7,
-  verticalAlign: 'top'
-})
+  verticalAlign: 'top',
+});
 
 export const Embed = {
   width: '100%',
   height: '100%',
-  border: 'none'
-}
+  border: 'none',
+};
