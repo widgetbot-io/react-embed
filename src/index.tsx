@@ -7,6 +7,7 @@ import { generateUUID, searchParams } from './util'
 export interface Props {
     server?: string
     channel?: string
+    thread?: string
     shard?: string
     username?: string
     avatar?: string
@@ -57,6 +58,7 @@ export default class WidgetBot extends React.PureComponent<Props> {
             ...props.options,
             api: state.id
         }
+        if (props.thread) params.thread = props.thread
         if (props.username) params.username = props.username
         if (props.avatar) params.avatar = props.avatar
         if (props.token) params.token = props.token
