@@ -1,8 +1,8 @@
-import React, { PureComponent, CSSProperties, RefObject } from 'react';
+import * as React from 'react';
+import { PureComponent, CSSProperties, RefObject } from 'react';
 import { Client } from '@widgetbot/embed-api';
 import { Embed, Root } from './elements';
 import { generateUUID, searchParams } from './util';
-
 interface Props {
   server?: string;
   channel?: string;
@@ -85,7 +85,7 @@ class WidgetBot extends PureComponent<Props, State> {
 
   api: Client = new Client({
     id: this.state.id,
-    iframe: null as RefObject<HTMLIFrameElement> | null,
+    iframe: null,
   });
   api: Client = new Client({
     id: this.state.id,

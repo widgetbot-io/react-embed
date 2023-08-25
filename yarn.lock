@@ -4,12 +4,12 @@
 
 "@types/prop-types@*":
   version "15.7.5"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
+  resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
 "@types/react@^18.2.20":
   version "18.2.20"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.20.tgz#1605557a83df5c8a2cc4eeb743b3dfc0eb6aaeb2"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.2.20.tgz"
   integrity sha512-WKNtmsLWJM/3D5mG4U84cysVY31ivmyw85dE84fOCk5Hx78wezB/XEjVPWl2JTZ5FkEeaTJf+VgUAUn3PE7Isw==
   dependencies:
     "@types/prop-types" "*"
@@ -18,50 +18,50 @@
 
 "@types/scheduler@*":
   version "0.16.3"
-  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.3.tgz#cef09e3ec9af1d63d2a6cc5b383a737e24e6dcf5"
+  resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.3.tgz"
   integrity sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==
 
 "@widgetbot/embed-api@^1.2.11":
   version "1.2.11"
-  resolved "https://registry.yarnpkg.com/@widgetbot/embed-api/-/embed-api-1.2.11.tgz#5a4b935f4be3d9a6f7b3da29471f141395762cd4"
+  resolved "https://registry.npmjs.org/@widgetbot/embed-api/-/embed-api-1.2.11.tgz"
   integrity sha512-uVP6blmJH3wW6naJK6xDLZIrWui3s9f5tRPe6fTwFEWi/TN2e/kNDVyKHYEwrdNGGHUUIUuK7mrCC1VRpKM8eA==
   dependencies:
     post-robot "^8.0.28"
 
 cross-domain-safe-weakmap@^1.0.1:
   version "1.0.29"
-  resolved "https://registry.yarnpkg.com/cross-domain-safe-weakmap/-/cross-domain-safe-weakmap-1.0.29.tgz#0847975c27d9e1cc840f24c1745311958df98022"
+  resolved "https://registry.npmjs.org/cross-domain-safe-weakmap/-/cross-domain-safe-weakmap-1.0.29.tgz"
   integrity sha512-VLoUgf2SXnf3+na8NfeUFV59TRZkIJqCIATaMdbhccgtnTlSnHXkyTRwokngEGYdQXx8JbHT9GDYitgR2sdjuA==
   dependencies:
     cross-domain-utils "^2.0.0"
 
 cross-domain-utils@^2.0.0:
   version "2.0.38"
-  resolved "https://registry.yarnpkg.com/cross-domain-utils/-/cross-domain-utils-2.0.38.tgz#2eaf321c4dfdb61596805ca4233fde4400cb6377"
+  resolved "https://registry.npmjs.org/cross-domain-utils/-/cross-domain-utils-2.0.38.tgz"
   integrity sha512-zZfi3+2EIR9l4chrEiXI2xFleyacsJf8YMLR1eJ0Veb5FTMXeJ3DpxDjZkto2FhL/g717WSELqbptNSo85UJDw==
   dependencies:
     zalgo-promise "^1.0.11"
 
 csstype@^3.0.2:
   version "3.1.2"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
+  resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.2.tgz"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
 
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
-  resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
+  resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
 loose-envify@^1.1.0:
   version "1.4.0"
-  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+  resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
 post-robot@^8.0.28:
   version "8.0.31"
-  resolved "https://registry.yarnpkg.com/post-robot/-/post-robot-8.0.31.tgz#0b5592b695d9252b86105b50b33d4469447349d5"
+  resolved "https://registry.npmjs.org/post-robot/-/post-robot-8.0.31.tgz"
   integrity sha512-nUhtKgtmcgyuPm4RnIhUB3gsDYJBHOgFry3TvOxhIHpgfwYY/T69d4oB90tw4YUllFZUUwqLEv1Wgyg6eOoJ7A==
   dependencies:
     cross-domain-safe-weakmap "^1.0.1"
@@ -70,12 +70,12 @@ post-robot@^8.0.28:
 
 react@^18.2.0:
   version "18.2.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
 
 zalgo-promise@^1.0.11, zalgo-promise@^1.0.3:
   version "1.0.48"
-  resolved "https://registry.yarnpkg.com/zalgo-promise/-/zalgo-promise-1.0.48.tgz#9e33eef502d5ed9f5a09fc5728c833c3e87afa2e"
+  resolved "https://registry.npmjs.org/zalgo-promise/-/zalgo-promise-1.0.48.tgz"
   integrity sha512-LLHANmdm53+MucY9aOFIggzYtUdkSBFxUsy4glTTQYNyK6B3uCPWTbfiGvSrEvLojw0mSzyFJ1/RRLv+QMNdzQ==
