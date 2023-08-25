@@ -25,28 +25,6 @@ interface Props {
   showChatButtonLabel?: string;
   hideChatButtonLabel?: string;
 }
-interface Props {
-  server?: string;
-  channel?: string;
-  shard?: string;
-  username?: string;
-  avatar?: string;
-  token?: string;
-  notifications?: boolean;
-  notificationTimeout?: number;
-  accessibility?: string[];
-  settingsGroup?: string;
-  defer?: boolean;
-  className?: string;
-  onAPI?: (api: Client) => void;
-  style?: CSSProperties;
-  height?: number | string;
-  width?: number | string;
-  focusable?: boolean;
-  options?: Record<string, string>;
-  showChatButtonLabel?: string;
-  hideChatButtonLabel?: string;
-}
 
 interface State {
   url: string | null;
@@ -55,16 +33,6 @@ interface State {
   hasError: boolean;
 }
 
-class WidgetBot extends PureComponent<Props, State> {
-  static defaultProps: Props = {
-    server: '299881420891881473',
-    shard: 'https://e.widgetbot.io',
-    options: {},
-    defer: false,
-    focusable: true,
-    showChatButtonLabel: 'Show Chat',
-    hideChatButtonLabel: 'Hide Chat',
-  };
 class WidgetBot extends PureComponent<Props, State> {
   static defaultProps: Props = {
     server: '299881420891881473',
@@ -86,10 +54,6 @@ class WidgetBot extends PureComponent<Props, State> {
   api: Client = new Client({
     id: this.state.id,
     iframe: null,
-  });
-  api: Client = new Client({
-    id: this.state.id,
-    iframe: null as RefObject<HTMLIFrameElement> | null,
   });
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
@@ -143,28 +107,6 @@ class WidgetBot extends PureComponent<Props, State> {
       </div>
     );
   }
-    return (
-      <div>
-        <div className={className} style={{ ...Root({ width, height }), ...style }}>
-          {isChatVisible && (
-            <iframe
-              src={defer ? '' : this.state.url}
-              ref={(ref) => (this.api.iframe = ref)}
-              style={Embed}
-              tabIndex={focusable ? undefined : -1}
-              allow="clipboard-write; fullscreen"
-              title="Discord chat embed"
-            />
-          )}
-        </div>
-        <button onClick={this.toggleChatVisibility}>
-          {isChatVisible ? hideChatButtonLabel : showChatButtonLabel}
-        </button>
-      </div>
-    );
-  }
 }
-
-export default WidgetBot;
 
 export default WidgetBot;
