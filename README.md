@@ -38,3 +38,37 @@ class App extends React.Component {
 
 export default App
 ```
+
+## Telegram
+
+`shard` is **required** — point it at your deployed Telegram widget host.
+
+```tsx
+import * as React from 'react'
+import { TelegramWidget } from '@widgetbot/react-embed'
+
+export default function App() {
+  return (
+    <TelegramWidget
+      chat="-1003784217881"
+      shard="https://your-telegram-widget.example.com"
+      width={400}
+      height={600}
+      onAPI={(api) => {
+        api.on('ready', () => console.log('ready'))
+        api.on('signIn', (user) => console.log('signed in', user))
+      }}
+    />
+  )
+}
+```
+
+Props:
+
+- `shard` (required) — URL of the deployed Telegram widget host
+- `chat` (required) — Telegram chat ID
+- `topic` (optional) — Topic ID for supergroup forums
+- `token` (optional) — Platform auth token
+- `width`, `height`, `style`, `className` — Standard styling
+- `onAPI` — Receives the `Client` instance for parent ↔ iframe communication
+

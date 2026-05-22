@@ -4,21 +4,14 @@ import * as React from 'react'
 import { Embed, Root } from './elements'
 import { generateUUID, searchParams } from './util'
 
-export { default as TelegramWidget, TelegramProps } from './telegram'
+export interface TelegramProps {
+    chat?: string
+    topic?: string
+    // Required: URL of the deployed Telegram widget host (no default).
+    shard: string
 
-export interface Props {
-    server?: string
-    channel?: string
-    thread?: string
-    shard?: string
-    username?: string
-    avatar?: string
     token?: string
-    notifications?: boolean
-    notificationTimeout?: number
-    accessibility?: string[]
     settingsGroup?: string
-    emitLatestMessage?: boolean
 
     defer?: boolean
 
@@ -33,10 +26,8 @@ export interface Props {
     options?: { [key: string]: string }
 }
 
-export default class WidgetBot extends React.PureComponent<Props> {
-    static defaultProps: Props = {
-        server: '299881420891881473',
-        shard: 'https://e.widgetbot.io',
+export default class TelegramWidget extends React.PureComponent<TelegramProps> {
+    static defaultProps: Partial<TelegramProps> = {
         options: {},
         defer: false,
         focusable: true
@@ -52,7 +43,12 @@ export default class WidgetBot extends React.PureComponent<Props> {
         iframe: null
     })
 
-    static getDerivedStateFromProps(props: Props, state) {
+    static getDerivedStateFromProps(props: TelegramProps, state) {
+        if (!props.shard) {
+            throw new Error(
+                '<TelegramWidget> requires a `shard` prop pointing at the widget host.'
+            )
+        }
         let shard = props.shard
         if (!shard.startsWith('http')) shard = `https://${shard}`
         if (shard.endsWith('/')) shard = shard.substring(0, shard.length - 1)
@@ -61,26 +57,19 @@ export default class WidgetBot extends React.PureComponent<Props> {
             ...props.options,
             api: state.id
         }
-        if (props.thread) params.thread = props.thread
-        if (props.username) params.username = props.username
-        if (props.avatar) params.avatar = props.avatar
         if (props.token) params.token = props.token
-        if (props.notifications) params.notifications = props.notifications
-        if (props.notificationTimeout) params.notificationtimeout = props.notificationTimeout
-        if (props.accessibility) params.accessibility = props.accessibility.join()
         if (props.settingsGroup) params['settings-group'] = props.settingsGroup
-        if (props.emitLatestMessage) params.emitLatestMessage = 1
 
-        const url = `${shard}/channels/${props.server}${
-            props.channel ? `/${props.channel}` : ''
-        }/${searchParams(params)}`
+        const path = props.chat
+            ? `/channels/${props.chat}${props.topic ? `/${props.topic}` : ''}`
+            : ''
+        const url = `${shard}${path}${searchParams(params)}`
 
         return { url }
     }
 
     componentDidMount() {
         const { onAPI } = this.props
-
         if (onAPI) onAPI(this.api)
     }
 
@@ -90,7 +79,11 @@ export default class WidgetBot extends React.PureComponent<Props> {
         return (
             <div
                 className={className}
-                style={{ ...Root({ width, height }), ...style }}
+                style={{
+                    ...Root({ width, height }),
+                    backgroundColor: 'rgb(23, 33, 43)',
+                    ...style
+                }}
             >
                 <iframe
                     src={defer ? '' : this.state.url}
@@ -98,7 +91,7 @@ export default class WidgetBot extends React.PureComponent<Props> {
                     style={Embed}
                     tabIndex={focusable ? null : -1}
                     allow="clipboard-write; fullscreen"
-                    title="Discord chat embed"
+                    title="Telegram chat embed"
                 />
             </div>
         )

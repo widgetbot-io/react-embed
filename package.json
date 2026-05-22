@@ -1,6 +1,6 @@
 {
   "name": "@widgetbot/react-embed",
-  "version": "1.9.0",
+  "version": "1.10.1",
   "private": false,
   "description": "WidgetBot react-embed",
   "main": "dist/index.js",
@@ -15,8 +15,8 @@
     "release": "yarn version && yarn publish"
   },
   "dependencies": {
-    "@widgetbot/embed-api": "^1.2.11",
-    "react": "^18.2.0"
+    "@widgetbot/embed-api": "^1.2.18",
+    "react": "^19.1.0"
   },
   "peerDependencies": {
     "react": ">= 15"
