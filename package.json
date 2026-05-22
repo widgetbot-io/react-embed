@@ -10,9 +10,9 @@
   "license": "MIT",
   "scripts": {
     "start": "tsc -w",
-    "prepublishOnly": "yarn build",
+    "prepublishOnly": "npm run build",
     "build": "tsc",
-    "release": "yarn version && yarn publish"
+    "release": "npm version patch && npm publish"
   },
   "dependencies": {
     "@widgetbot/embed-api": "^1.2.18",
